@@ -4,7 +4,7 @@ const { execFile } = require("child_process");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const PYTHON = "C:\\Users\\Admin\\OneDrive\\AI-Video-Maker\\ai_env\\Scripts\\python.exe";
+const PYTHON = process.env.PYTHON || "python";
 
 app.use(express.json());
 app.use(express.static(__dirname));
