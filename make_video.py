@@ -15,7 +15,7 @@ for scene in scenes:
 
     print(f"Processing {scene}...", flush=True)
 
-    clip = ImageClip(path).with_duration(4)
+    clip = ImageClip(path).with_duration(2)
 
     # Slow zoom effect
     clip = clip.resized(lambda t: 1 + 0.02 * t)
@@ -31,7 +31,7 @@ print("Starting video encoding...", flush=True)
 
 video.write_videofile(
     "generated/scenes/episode1.mp4",
-    fps=20,
+    fps=10,
     codec="libx264",
     audio=False,
     preset="ultrafast",
