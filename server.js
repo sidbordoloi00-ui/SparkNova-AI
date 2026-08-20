@@ -63,6 +63,6 @@ app.post("/generate-video", (req, res) => {
     );
 });
 
-app.listen(PORT, "127.0.0.1", () => {
-    console.log(`NovaStudio AI running at http://localhost:${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`NovaStudio AI running on port ${PORT}`);
 });
