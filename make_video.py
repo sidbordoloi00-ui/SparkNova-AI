@@ -13,11 +13,12 @@ clips = []
 for scene in scenes:
     path = "generated/scenes/" + scene
 
-    # প্ৰতিটো scene 5 second
-    clip = ImageClip(path).with_duration(5)
+    print(f"Processing {scene}...", flush=True)
 
-    # ধীৰে ধীৰে zoom effect
-    clip = clip.resized(lambda t: 1 + 0.03 * t)
+    clip = ImageClip(path).with_duration(4)
+
+    # Slow zoom effect
+    clip = clip.resized(lambda t: 1 + 0.02 * t)
 
     clips.append(clip)
 
@@ -26,9 +27,17 @@ video = concatenate_videoclips(
     method="compose"
 )
 
+print("Starting video encoding...", flush=True)
+
 video.write_videofile(
     "generated/scenes/episode1.mp4",
-    fps=24
+    fps=20,
+    codec="libx264",
+    audio=False,
+    preset="ultrafast",
+    logger="bar"
 )
 
-print("Episode 1 animated video created!")
+video.close()
+
+print("Episode 1 animated video created!", flush=True)
